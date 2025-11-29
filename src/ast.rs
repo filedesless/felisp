@@ -1,6 +1,6 @@
 use std::{fmt, iter::Peekable, str::Chars};
 
-#[derive(Debug)]
+#[derive(Debug, Eq, PartialEq, Hash, Clone)]
 pub enum Expr {
     Atom(String),
     List(Vec<Expr>),
