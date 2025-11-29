@@ -24,10 +24,14 @@ impl fmt::Display for Expr {
             Expr::List(exprs) => {
                 write!(f, "(")?;
                 let n = exprs.len();
-                for expr in &exprs[..n - 1] {
-                    write!(f, "{} ", expr)?;
+                if n > 0 {
+                    for expr in &exprs[..n - 1] {
+                        write!(f, "{} ", expr)?;
+                    }
+                    write!(f, "{})", exprs[n - 1])
+                } else {
+                    write!(f, ")")
                 }
-                write!(f, "{})", exprs[n - 1])
             }
         }
     }
